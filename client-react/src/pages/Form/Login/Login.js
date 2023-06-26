@@ -3,6 +3,7 @@ import './Login.css'
 import { MdEmail } from 'react-icons/md';
 import { AiFillLock } from 'react-icons/ai';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import { Link } from 'react-router-dom';
 // import SocialLogin2 from './SocialLogin2';
 
 const Login = () => {
@@ -38,7 +39,7 @@ const Login = () => {
 
                         <button className='form-login-button' type="submit">Login</button>
                         <div class="register-link">
-                            <p>Don't have an account? <a href="#">Register</a></p>
+                            <p>Don't have an account? <Link to='/signup'>Register</Link></p>
                         </div>
 
 
