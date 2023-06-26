@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main";
+import ChatWithPDF from "../pages/ChatWithPDF/ChatWithPDF";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -19,10 +20,10 @@ const routes = createBrowserRouter([
       },
       {
         path: "/chat",
-        element: <div>Chat</div>,
+        element: <ChatWithPDF />,
       },
     ],
   },
 ]);
 
-export default routes; 
+export default routes;
