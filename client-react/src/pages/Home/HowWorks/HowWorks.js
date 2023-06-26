@@ -6,7 +6,7 @@ const HowWorks = () => {
   return (
     <div className="my-20">
       <div className="grid grid-cols-2 gap-4">
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-96 mx-auto bg-base-100 shadow-xl">
           <figure className="bg-cover">
             <img src={cv1} alt="cv" />
           </figure>
@@ -21,7 +21,7 @@ const HowWorks = () => {
             </div>
           </div>
         </div>
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card mx-auto w-96 bg-base-100 shadow-xl">
           <figure className="bg-cover">
             <img src={resume1} alt="Shoes" />
           </figure>
