@@ -5,19 +5,16 @@ const Navbar = () => {
   const menuItems = (
     <React.Fragment>
       <li>
-        <Link className="text-lg" to="">About</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <Link className="text-lg" to="">Product</Link>
+        <Link to="">About</Link>
       </li>
       <li>
-        <Link className="text-lg" to="">Why Us</Link>
+        <Link to="">Product</Link>
       </li>
       <li>
-        <Link className="text-lg" to="">Pricing</Link>
-      </li>
-      <li>
-        <Link className="text-lg" to="/login">Login</Link>
+        <Link to="">Price</Link>
       </li>
     </React.Fragment>
   );
@@ -50,8 +47,8 @@ const Navbar = () => {
               {menuItems}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl font-bold">
-            Resume Analysis
+          <Link to="/" className="btn btn-ghost normal-case text-xl">
+            AI Architects
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
