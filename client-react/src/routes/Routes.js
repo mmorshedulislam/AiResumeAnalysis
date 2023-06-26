@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main";
 import ChatWithPDF from "../pages/ChatWithPDF/ChatWithPDF";
+import Home from "../pages/Home/Home";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -8,7 +9,7 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Home />,
       },
       {
         path: "/login",
