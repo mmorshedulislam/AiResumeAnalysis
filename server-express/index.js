@@ -3,6 +3,14 @@ const dotenv = require("dotenv").config();
 const cors = require("cors");
 const port = process.env.PORT || 8080;
 const mongoose = require("mongoose");
+const { PineconeStore } = require("langchain/vectorstores/pinecone");
+const { OpenAIEmbeddings } = require("langchain/embeddings/openai");
+const { pinecone } = require("./utils/pinecone-client");
+const {
+  PINECONE_INDEX_NAME,
+  PINECONE_NAME_SPACE,
+} = require("./config/pinecone");
+const { makeChain } = require("./utils/makechain");
 
 const app = express();
 app.use(cors());
@@ -19,7 +27,7 @@ try {
   console.log(error);
 }
 
-app.post("/api/chat", (req, res) => {
+app.post("/api/chat", async (req, res) => {
   const { question, history } = req.body;
 
   if (!question) {
@@ -30,11 +38,35 @@ app.post("/api/chat", (req, res) => {
 
   // OpenAI recommends replacing newlines with spaces for best results
   const sanitizedQuestion = question.trim().replaceAll("\n", " ");
+  try {
+    const index = pinecone.Index(PINECONE_INDEX_NAME);
 
-  res.send({
-    sanitizedQuestion,
-    history,
-  });
+    // create vector store
+    const vectorStore = await PineconeStore.fromExistingIndex(
+      new OpenAIEmbeddings({}),
+      {
+        pineconeIndex: index,
+        textKey: "text",
+        namespace: PINECONE_NAME_SPACE,
+      }
+    );
+
+    // create chain
+    const chain = makeChain(vectorStore);
+
+    //Ask a question using chat history
+    const response = await chain.call({
+      question: sanitizedQuestion,
+      chat_history: history || [],
+    });
+
+    console.log(response);
+    res.status(200).json({
+      response,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
 });
 
 app.use((req, res, next) => {
