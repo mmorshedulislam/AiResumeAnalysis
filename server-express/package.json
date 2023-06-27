@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@pinecone-database/pinecone": "^0.1.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "langchain": "^0.0.97",
+    "mongoose": "^7.3.1",
+    "openai": "^3.3.0",
+    "pinecone-client": "^1.1.0"
+  },
+  "name": "resume-analysis",
+  "version": "1.0.0",
+  "description": "PDF Chatbot using langchain and openAI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Md Morshedul Islam",
+  "license": "ISC"
+}
